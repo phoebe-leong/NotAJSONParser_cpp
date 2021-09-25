@@ -21,14 +21,6 @@ struct najp_data {
     }
 };
 
-void najp_hjson() {
-    #ifdef NAJP_HJSON
-        #undef NAJP_HJSON
-    #else
-        #define NAJP_HJSON
-    #endif
-}
-
 struct najp {
     std::ofstream json;
     najp_data d;
@@ -37,17 +29,6 @@ struct najp {
         json.open(file);
         json << "{\n";
     }
-
-    #ifdef NAJP_HJSON
-        void addcomment(const std::string comment) {
-            if (d.isubclass) {
-                for (int i = 0; i != d.parentsubclasses; i++) {
-                    json << "\t";
-                }
-            }
-            json << "\t# " << comment << "\n";
-        }
-    #endif
 
     int addarray(const std::string title, const najp_array values) {
         int i = 0;
@@ -63,11 +44,7 @@ struct najp {
         if (!d.comma) {
             d.comma = true;
         } else {
-            #ifdef NAJP_HJSON
-                json << "\n";
-            #else
-                json << ",\n";
-            #endif
+            json << ",\n";
         }
 
         if (d.isubclass) {
@@ -114,11 +91,7 @@ struct najp {
         }
         d.titles.push_back(title);
         if (d.comma) {
-            #ifdef NAJP_HJSON
-                json << "\n";
-            #else
-                json << ",\n";
-            #endif
+            json << ",\n";
         } else {
             d.comma = true;
         }
@@ -147,11 +120,7 @@ struct najp {
         }
         d.titles.push_back(title);
         if (d.comma) {
-            #ifdef NAJP_HJSON
-                json << "\n";
-            #else
-                json << ",\n";
-            #endif
+            json << ",\n";
         } else {
             d.comma = true;
         }
@@ -182,11 +151,8 @@ struct najp {
         d.subclasstitles.push_back(title);
 
         if (d.comma) {
-            #ifndef NAJP_HJSON
-                json << ",";
-            #endif
+            json << ",\n";
         }
-        json << "\n";
 
         if (d.isubclass) {
             for (int i = 0; i != d.parentsubclasses; i++) {
