@@ -2,7 +2,6 @@
 #include <fstream>
 #include <vector>
 #include <type_traits>
-#include "termcolor/termcolor.hpp"
 #include <iostream>
 #include <map>
 
@@ -12,6 +11,8 @@
     #include <windows.h>
     #define TERMCOLOR_USE_ANSI_ESCAPE_SEQUENCES
 #endif
+
+#include "termcolor/termcolor.hpp"
 
 #define NAJP_OK 0
 #define NAJP_TITLE_ALREADY_IN_USE -1
