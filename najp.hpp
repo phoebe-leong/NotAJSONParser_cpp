@@ -8,28 +8,28 @@
 #define NAJP_TITLE_ALREADY_IN_USE -1
 #define NAJP_SUBCLASS_NOT_CURRENT -2
 
-#define NAJP_VERSION 1.1
-
-struct najp_data
-{
-    bool comma, isubclass, isubclasstart;
-    int parentsubclasses;
-    std::vector<std::string> titles;
-    std::vector<std::string> subclasstitles;
-
-    najp_data() {
-        comma = false;
-        parentsubclasses = 0;
-    }
-};
+#define NAJP_VERSION 1.2
 
 class najp
 {
     private:
+        struct data
+        {
+            bool comma, isubclass, isubclasstart;
+            int parentsubclasses;
+            std::vector<std::string> titles;
+            std::vector<std::string> subclasstitles;
+
+            data() {
+                comma = false;
+                parentsubclasses = 0;
+            }
+        };
+
         std::ofstream json;
-        najp_data d;
+        data d;
     public:
-        typedef std::map<std::string, bool> najp_array;
+        typedef std::map<std::string, bool> array;
 
         void open(const std::string file)
         {
@@ -37,7 +37,7 @@ class najp
             json << "{\n";
         }
 
-        int addarray(const std::string title, const najp_array values)
+        int addarray(const std::string title, const array values)
         {
             int i = 0;
             for (const auto& [value, istring] : values)
