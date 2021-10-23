@@ -8,6 +8,8 @@
 #define NAJP_TITLE_ALREADY_IN_USE -1
 #define NAJP_SUBCLASS_NOT_CURRENT -2
 
+#define NAJP_VERSION 1.1
+
 struct najp_data
 {
     bool comma, isubclass, isubclasstart;
