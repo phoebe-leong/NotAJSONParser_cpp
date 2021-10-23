@@ -240,4 +240,7 @@ class najp
             json << "\n}";
             json.close();
         }
+
+        najp(const std::string file = "") { if (file != "") open(file); }
+        ~najp() { close(); }
 };
