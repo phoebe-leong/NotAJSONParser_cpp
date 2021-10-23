@@ -8,7 +8,8 @@
 #define NAJP_TITLE_ALREADY_IN_USE -1
 #define NAJP_SUBCLASS_NOT_CURRENT -2
 
-struct najp_data {
+struct najp_data
+{
     bool comma, isubclass, isubclasstart;
     int parentsubclasses;
     std::vector<std::string> titles;
@@ -20,7 +21,8 @@ struct najp_data {
     }
 };
 
-class najp {
+class najp
+{
     private:
         std::ofstream json;
         najp_data d;
