@@ -1,4 +1,8 @@
-# NotAJSONParser_cpp - with handy console output
+# NotAJSONParser_cpp - with handy console output  
+  
+> **NOTE:**  
+> ***THIS VERSION HAS NOT BEEN UPDATED TO v2.0***
+
 A C++17 version of NotAJSONParser  
 
 ## Example
